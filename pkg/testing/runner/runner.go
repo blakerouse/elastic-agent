@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path"
 	"path/filepath"
 	"slices"
 	"strings"
@@ -1129,6 +1130,9 @@ func createBatchID(batch OSBatch) string {
 		id += "-" + batch.OS.Distro
 	}
 	id += "-" + strings.Replace(batch.OS.Version, ".", "", -1)
+	if batch.OS.Type == define.Kubernetes && batch.OS.DockerImage != "" {
+		id += "-" + strings.TrimPrefix(path.Base(batch.OS.DockerImage), "elastic-agent-")
+	}
 	id += "-" + strings.Replace(batch.Batch.Group, ".", "", -1)
 
 	// The batchID needs to be at most 63 characters long otherwise

@@ -2,6 +2,8 @@
 // or more contributor license agreements. Licensed under the Elastic License 2.0;
 // you may not use this file except in compliance with the Elastic License 2.0.
 
+//go:build integration
+
 package integration
 
 import (
@@ -61,6 +63,9 @@ func TestKubernetesAgentStandaloneKustomize(t *testing.T) {
 		Sudo:  false,
 		OS: []define.OS{
 			{Type: define.Kubernetes},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-ubi"},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-wolfi"},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats-ci/elastic-agent-service"},
 		},
 		Group: define.Kubernetes,
 	})
@@ -226,6 +231,8 @@ func TestKubernetesAgentOtel(t *testing.T) {
 		Sudo:  false,
 		OS: []define.OS{
 			{Type: define.Kubernetes},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-ubi"},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-wolfi"},
 		},
 		Group: define.Kubernetes,
 	})
@@ -342,6 +349,8 @@ func TestKubernetesAgentHelm(t *testing.T) {
 		Sudo:  false,
 		OS: []define.OS{
 			{Type: define.Kubernetes},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-ubi"},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-wolfi"},
 		},
 		Group: define.Kubernetes,
 	})
