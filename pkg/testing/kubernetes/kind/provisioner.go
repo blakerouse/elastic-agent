@@ -214,7 +214,6 @@ func (p *provisioner) WaitForControlPlane(client klient.Client) error {
 
 func (p *provisioner) Clean(ctx context.Context, cfg runner.Config, instances []runner.Instance) error {
 	// doesn't execute in parallel for the same reasons in Provision
-	// multipass just cannot handle it
 	for _, instance := range instances {
 		func(instance runner.Instance) {
 			err := p.deleteCluster(instance.ID)
