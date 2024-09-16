@@ -62,7 +62,7 @@ func TestKubernetesAgentStandaloneKustomize(t *testing.T) {
 		Local: false,
 		Sudo:  false,
 		OS: []define.OS{
-			{Type: define.Kubernetes},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent"},
 			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-ubi"},
 			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-wolfi"},
 			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats-ci/elastic-agent-service"},
@@ -230,7 +230,7 @@ func TestKubernetesAgentOtel(t *testing.T) {
 		Local: false,
 		Sudo:  false,
 		OS: []define.OS{
-			{Type: define.Kubernetes},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent"},
 			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-ubi"},
 			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-wolfi"},
 		},
@@ -348,7 +348,7 @@ func TestKubernetesAgentHelm(t *testing.T) {
 		Local: false,
 		Sudo:  false,
 		OS: []define.OS{
-			{Type: define.Kubernetes},
+			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent"},
 			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-ubi"},
 			{Type: define.Kubernetes, DockerImage: "docker.elastic.co/beats/elastic-agent-wolfi"},
 		},

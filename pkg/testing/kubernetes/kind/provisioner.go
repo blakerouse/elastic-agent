@@ -8,7 +8,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/elastic/elastic-agent/pkg/testing/kubernetes"
 	"io"
 	"os"
 	"os/exec"
@@ -16,6 +15,7 @@ import (
 	"strings"
 
 	"github.com/elastic/elastic-agent/pkg/testing/define"
+	"github.com/elastic/elastic-agent/pkg/testing/kubernetes"
 	"github.com/elastic/elastic-agent/pkg/testing/runner"
 
 	v1 "k8s.io/api/core/v1"
@@ -28,9 +28,8 @@ import (
 )
 
 const (
-	Name               = "kind"
-	DefaultVersion     = "1.30.2"
-	DefaultDockerImage = "docker.elastic.co/beats/elastic-agent"
+	Name           = "kind"
+	DefaultVersion = "1.30.2"
 )
 
 const clusterCfg string = `
@@ -92,7 +91,7 @@ func (p *provisioner) Provision(ctx context.Context, cfg runner.Config, batches 
 
 		agentImageName := batch.OS.DockerImage
 		if agentImageName == "" {
-			agentImageName = DefaultDockerImage
+			return nil, fmt.Errorf("docker image must be defined in the batch: %s", batch.ID)
 		}
 		agentImageName = fmt.Sprintf("%s:%s", agentImageName, cfg.AgentVersion)
 		agentImage, err := kubernetes.AddK8STestsToImage(ctx, p.logger, agentImageName, runtime.GOARCH)

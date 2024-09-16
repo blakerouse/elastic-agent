@@ -81,6 +81,9 @@ func (o OS) Validate() error {
 	if o.DockerImage != "" && o.Type != Kubernetes {
 		return errors.New("docker image can only be set when type is kubernetes")
 	}
+	if o.Type == Kubernetes && o.DockerImage == "" {
+		return errors.New("docker image must be set when type is kubernetes")
+	}
 	return nil
 }
 
