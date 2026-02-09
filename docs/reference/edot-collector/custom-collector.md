@@ -49,7 +49,7 @@ The following example, `builder-config.yml`, contains the components needed to s
 % Note that while this runs on `main`, the OCB configuration is updated based on the latest released version.
 
 % start:edot-collector-components-ocb
-This OCB configuration is for EDOT Collector version 9.2.4.
+This OCB configuration is for EDOT Collector version 9.3.0.
 
 ```yaml
 dist:
@@ -73,6 +73,8 @@ dist:
 receivers:
   apachereceiver:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/apachereceiver v0.141.0
+  awss3receiver:
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awss3receiver v0.141.0
   dockerstatsreceiver:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/dockerstatsreceiver v0.141.0
   elasticapmintakereceiver:
@@ -111,10 +113,14 @@ receivers:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/postgresqlreceiver v0.141.0
   prometheusreceiver:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver v0.141.0
+  prometheusremotewritereceiver:
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusremotewritereceiver v0.141.0
   receivercreator:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/receivercreator v0.141.0
   redisreceiver:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/redisreceiver v0.141.0
+  snmpreceiver:
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver v0.141.0
   sqlserverreceiver:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlserverreceiver v0.141.0
   windowseventlogreceiver:
@@ -189,6 +195,8 @@ extensions:
     gomod: github.com/elastic/opentelemetry-collector-components/extension/apikeyauthextension v0.24.0
   apmconfigextension:
     gomod: github.com/elastic/opentelemetry-collector-components/extension/apmconfigextension v0.24.0
+  awslogsencodingextension:
+    gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/awslogsencodingextension v0.141.0
   bearertokenauthextension:
     gomod: github.com/open-telemetry/opentelemetry-collector-contrib/extension/bearertokenauthextension v0.141.0
   filestorage:
@@ -216,7 +224,7 @@ providers:
   httpprovider:
     gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v1.47.0
   httpsprovider:
-    gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.45.0
+    gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.47.0
   yamlprovider:
     gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.47.0
 ```
