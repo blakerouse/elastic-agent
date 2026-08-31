@@ -8,15 +8,20 @@
 # - security: impacts on the security of a product or a user’s deployment.
 # - upgrade: important information for someone upgrading from a prior version
 # - other: does not fit into any of the other categories
-kind: security
+kind: enhancement
 
 # Change summary; a 80ish characters long description of the change.
-summary: Fix local privilege escalation via binary tampering on Windows unprivileged installs
+summary: Make the dynamic inputs runtime override configurable per beat, input type and variable
 
 # Long description; in case the summary is not enough to describe the change
 # this field accommodate a description without length limits.
 # NOTE: This field will be rendered only for breaking-change and known-issue kinds at the moment.
-#description:
+description: |
+  `agent.internal.runtime.dynamic_inputs` now accepts a map in addition to the existing
+  runtime name, allowing the runtime used by components with dynamic inputs to be set per
+  beat and per input type. It also accepts a `static_variables` list of dynamic provider
+  variables that cannot change at runtime; an input resolving only such variables is no
+  longer treated as dynamic.
 
 # Affected component; usually one of "elastic-agent", "fleet-server", "filebeat", "metricbeat", "auditbeat", "all", etc.
 component: elastic-agent
